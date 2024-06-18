@@ -144,7 +144,7 @@ Basic security is implemented using Spring Security. Passwords are hashed using 
 Swagger is used for API documentation. Once the application is running, access the documentation at http://localhost:8080/swagger-ui/index.html.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License .
 ```
 
 This Markdown file provides a comprehensive overview of the User Registration and Fetch API project, including prerequisites, project structure, dependencies, API endpoints, exception handling, security, documentation and licensing information.
