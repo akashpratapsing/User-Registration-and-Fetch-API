@@ -114,25 +114,77 @@ Add the following dependencies in `pom.xml`:
 1. **Register User**
    - URL: `/api/user/register`
    - Method: `POST`
-   - Request Body:
-     ```json
-     {
-         "username": "john_doe",
-         "email": "john@example.com",
-         "password": "password123"
-     }
-     ```
-   - Response:
-     - `200 OK` on successful registration
-     - `400 Bad Request` on validation errors
+  ## Endpoints
+
+### 1. Register User
+
+- **URL**: `/api/user/register`
+- **Method**: `POST`
+- **Description**: Registers a new user.
+- **Request Body**:
+    ```json
+    {
+        "username": "john_doe",
+        "email": "john@example.com",
+        "password": "password123"
+    }
+    ```
+- **Responses**:
+    - **Success**: `200 OK`
+        ```json
+        {
+            "id": 1,
+            "username": "john_doe",
+            "email": "john@example.com"
+        }
+        ```
+    - **Failure**: `400 Bad Request`
+        ```json
+        {
+            "message": "User Already exist with this email !"
+        }
+        ```
+
+#### cURL Command
+
+```sh
+curl -X POST "http://localhost:8080/api/user/register" -H "Content-Type: application/json" -d '{
+    "username": "john_doe",
+    "email": "john@example.com",
+    "password": "password123"
+}'
+
+```
+
 
 2. **Fetch User Details**
-   - URL: `/api/user/fetch`
-   - Method: `GET`
-   - Query Parameter: `username`
-   - Response:
-     - `200 OK` with user details on success
-     - `404 Not Found` if user does not exist
+   - **URL**: `/api/user/fetch`
+   - **Method:** `GET`
+   - **Description**:Fetches user details by username.
+   - **Query Parameter**:
+        - `username` (required): The username of the user to fetch.
+- **Responses**:
+    - **Success**: `200 OK`
+        ```json
+        {
+            "id": 1,
+            "username": "john_doe",
+            "email": "john@example.com"
+        }
+        ```
+    - **Failure**: `400 Bad Request`
+        ```json
+        {
+             "message": "User not found with username : john_doe"
+        }
+        ```
+  #### cURL Command
+```sh
+
+curl -X GET "http://localhost:8080/api/user/fetch?username=john_doe" -H "Content-Type: application/json"
+
+```
+
 
 ## Exception Handling
 The `ResourceNotFoundException` class is used to handle cases where a requested resource is not found. It extends `RuntimeException` and provides meaningful error messages.
